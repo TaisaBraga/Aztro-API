@@ -1,29 +1,25 @@
 <template>
-  <v-container>
-    <h1>NOVO PROJETO</h1>
+  <v-app>
+    <AppTopBar />
+    <v-main>
     <router-view/>
-  </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-nav {
-  padding: 30px;
+import AppTopBar from '../src/components/AppTopBar.vue'
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: 'App',
+  components: {
+    AppTopBar,
   }
 }
+</script>
+
+
+<style lang="scss">
+
 </style>
