@@ -39,16 +39,20 @@
         </v-btn>
       </v-card-actions>
     </v-card>
+
   </div>
 </template>
 
 
 <script>
+import {returnSign} from '../../services/AztroServices'
 
 export default {
   name: 'HomeView',
 
-
+  mounted(){
+    returnSign()
+  }
 }
 
 
