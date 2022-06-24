@@ -1,21 +1,25 @@
 import axios from 'axios'
 
-const URL = 'https://aztro.sameerkumar.website/'
+const URL = 'https://aztro.sameerkumar.website'
 
-export function returnSigns() {
-  return axios.get(`${URL}/?sign=aries&day=today`).then(response => {
-    const Signs = response.data
-    return Signs?.map(sign => {
+export function returnSign() {
+  return axios
+    .post(`${URL}/?sign=aries&day=today`)
+    .then(response => {
+      const signs = response.data
+      console.log(`current_date o>>> ` + signs.current_date)
       return {
-        daty: sign.current_date,
-        compatibility: sign.compatibility,
-        lucky_time: sign.lucky_time,
-        lucky_number: sign.lucky_number,
-        color: sign.color,
-        date_range: sign.date_range,
-        mood: sign.mood,
-        description: sign.description
+        current_date: signs.current_date,
+        compatibility: signs.compatibility,
+        lucky_number: signs.lucky_number,
+        lucky_time: signs.lucky_time,
+        color: signs.color,
+        date_range: signs.date_range,
+        mood: signs.mood,
+        description: signs.description
       }
     })
-  })
+    .catch(error => {
+      console.log(`Error o>>> ` + error)
+    })
 }
