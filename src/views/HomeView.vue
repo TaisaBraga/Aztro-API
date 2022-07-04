@@ -17,10 +17,9 @@
         Number 10
       </v-card-subtitle>
 
-      <v-card-text class="text--primary">
+      <v-card-text class="text--primary" >
         <div>Whitehaven Beach</div>
-
-        <div>Whitsunday Island, Whitsunday Islands</div>
+        <h4>Description: {{signItem.description}}</h4>
       </v-card-text>
 
       <v-card-actions>
@@ -50,12 +49,27 @@ import {returnSign} from '../../services/AztroServices'
 export default {
   name: 'HomeView',
 
+ return: {
+  sign: {}
+  },
+
   mounted(){
-    returnSign()
+    this.signItem();
+  },
+
+  methods:{
+    signItem(){
+      returnSign()
+      .then(result => {
+        this.sign = result
+        console.log(result)
+      })
+      .catch(error => {
+      console.log(`Error o>>> ` + error)
+    });      
+    }
   }
 }
-
-
 </script>
 
 
